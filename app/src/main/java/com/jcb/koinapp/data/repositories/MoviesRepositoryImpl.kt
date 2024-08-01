@@ -47,6 +47,7 @@ class MoviesRepositoryImpl(
                 .getUpcomingMovies(headers, page)
                 .toMovieList()
         } catch (e: Exception) {
+            Log.e("MoviesRepositoryImpl", "getUpcomingMovies: ${e.localizedMessage}")
             null
         }
     }
@@ -57,6 +58,7 @@ class MoviesRepositoryImpl(
                 .getNowPlayingMovies(headers, page)
                 .toMovieList()
         } catch (e: Exception) {
+            Log.e("MoviesRepositoryImpl", "getNowPlayingMovies: ${e.localizedMessage}")
             null
         }
     }

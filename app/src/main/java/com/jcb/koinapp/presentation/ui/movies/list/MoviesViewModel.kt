@@ -66,9 +66,4 @@ class MoviesViewModel(
         }
         popularMovies = movies
     }
-
-    fun onMovieSelected(movieId: Int) {
-
-    }
-
 }
