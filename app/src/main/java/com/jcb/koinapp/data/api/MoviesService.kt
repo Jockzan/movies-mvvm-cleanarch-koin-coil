@@ -1,8 +1,15 @@
 package com.jcb.koinapp.data.api
 
+import com.jcb.koinapp.BuildConfig
 import com.jcb.koinapp.data.models.MovieDetailsModel
 import com.jcb.koinapp.data.models.MovieListModel
 import com.jcb.koinapp.data.models.MovieVideosModel
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.HeaderMap
 import retrofit2.http.Path
@@ -45,3 +52,25 @@ interface MoviesService {
         @Path("id") id: Int,
     ): MovieDetailsModel
 }
+
+fun createMoviesService() = Retrofit
+    .Builder()
+    .baseUrl(BuildConfig.API_URL)
+    .addConverterFactory(
+        MoshiConverterFactory.create(
+            Moshi.Builder()
+                .add(KotlinJsonAdapterFactory())
+                .build()
+        )
+    )
+    .client(
+        OkHttpClient
+            .Builder()
+            .addNetworkInterceptor(
+                HttpLoggingInterceptor().apply {
+                    level = HttpLoggingInterceptor.Level.BODY
+                },
+            ).retryOnConnectionFailure(true)
+            .build(),
+    ).build()
+    .create(MoviesService::class.java) as MoviesService
