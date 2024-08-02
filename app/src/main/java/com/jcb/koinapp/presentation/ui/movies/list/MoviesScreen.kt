@@ -29,9 +29,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.jcb.koinapp.BuildConfig
 import com.jcb.koinapp.domain.models.Movie
 import com.jcb.koinapp.presentation.ui.navigation.Screen
+import com.jcb.koinapp.presentation.utils.Constants
 import org.koin.androidx.compose.getViewModel
 
 @Composable
@@ -116,7 +116,7 @@ private fun MoviesContent(
             .fillMaxWidth(),
     ) {
         items(movies) { movie ->
-            val model = "${BuildConfig.IMAGE_URL}${movie.posterPath}"
+            val model = "${Constants.IMAGE_URL}${movie.posterPath}"
             AsyncImage(
                 modifier = Modifier
                     .width(100.dp)

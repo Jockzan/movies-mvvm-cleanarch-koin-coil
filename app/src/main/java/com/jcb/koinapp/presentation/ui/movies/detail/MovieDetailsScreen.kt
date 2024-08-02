@@ -39,9 +39,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.jcb.koinapp.BuildConfig
 import com.jcb.koinapp.domain.models.ProductionCompany
 import com.jcb.koinapp.domain.models.Video
+import com.jcb.koinapp.presentation.utils.Constants
 import com.jcb.koinapp.presentation.utils.toMedium
 import org.koin.androidx.compose.getViewModel
 
@@ -66,7 +66,7 @@ fun MovieDetailsScreen(
                 .background(Color.Black)
                 .fillMaxSize()
         ) {
-            val model = "${BuildConfig.IMAGE_URL}${movieDetails.backdropPath}"
+            val model = "${Constants.IMAGE_URL}${movieDetails.backdropPath}"
             AsyncImage(
                 modifier = Modifier
                     .fillMaxWidth(),
@@ -168,7 +168,7 @@ fun MovieDetailsScreen(
                         movieDetails.productionCompanies
                     )
                 }
-                val movPst = "${BuildConfig.IMAGE_URL}${movieDetails.posterPath}"
+                val movPst = "${Constants.IMAGE_URL}${movieDetails.posterPath}"
                 AsyncImage(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -206,7 +206,7 @@ private fun MoviesPreviewContent(
     ) {
         items(videos) { video ->
             val model =
-                "${BuildConfig.YOUTUBE_IMAGE_URL_PRE}${video.key}${BuildConfig.YOUTUBE_IMAGE_URL_POST}"
+                "${Constants.YOUTUBE_IMAGE_URL_PRE}${video.key}${Constants.YOUTUBE_IMAGE_URL_POST}"
             Column(
                 verticalArrangement = Arrangement.Center,
             ) {
@@ -253,7 +253,7 @@ private fun MoviesProductionCompaniesContent(
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         items(companies) { company ->
-            val model = "${BuildConfig.IMAGE_URL}${company.logoPath}"
+            val model = "${Constants.IMAGE_URL}${company.logoPath}"
             Column(
                 verticalArrangement = Arrangement.Center,
             ) {
@@ -284,7 +284,7 @@ private fun openYouTube(videoId: String, context: Context) {
     } else {
         // Fallback to browser if YouTube app is not available
         val webIntent =
-            Intent(Intent.ACTION_VIEW, Uri.parse("${BuildConfig.YOUTUBE_URL}$videoId"))
+            Intent(Intent.ACTION_VIEW, Uri.parse("${Constants.YOUTUBE_URL}$videoId"))
         context.startActivity(webIntent)
     }
 }

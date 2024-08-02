@@ -31,19 +31,6 @@ android {
         }
 
         buildConfigField("String", "API_TOKEN", "\"${tokenProperties["API_TOKEN"]}\"")
-        buildConfigField("String", "API_URL", "\"${tokenProperties["API_URL"]}\"")
-        buildConfigField("String", "IMAGE_URL", "\"${tokenProperties["IMAGE_URL"]}\"")
-        buildConfigField("String", "YOUTUBE_URL", "\"${tokenProperties["YOUTUBE_URL"]}\"")
-        buildConfigField(
-            "String",
-            "YOUTUBE_IMAGE_URL_PRE",
-            "\"${tokenProperties["YOUTUBE_IMAGE_URL_PRE"]}\""
-        )
-        buildConfigField(
-            "String",
-            "YOUTUBE_IMAGE_URL_POST",
-            "\"${tokenProperties["YOUTUBE_IMAGE_URL_POST"]}\""
-        )
     }
 
     buildFeatures {

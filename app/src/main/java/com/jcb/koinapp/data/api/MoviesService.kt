@@ -1,9 +1,9 @@
 package com.jcb.koinapp.data.api
 
-import com.jcb.koinapp.BuildConfig
 import com.jcb.koinapp.data.models.MovieDetailsModel
 import com.jcb.koinapp.data.models.MovieListModel
 import com.jcb.koinapp.data.models.MovieVideosModel
+import com.jcb.koinapp.presentation.utils.Constants
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
@@ -55,7 +55,7 @@ interface MoviesService {
 
 fun createMoviesService() = Retrofit
     .Builder()
-    .baseUrl(BuildConfig.API_URL)
+    .baseUrl(Constants.API_URL)
     .addConverterFactory(
         MoshiConverterFactory.create(
             Moshi.Builder()
