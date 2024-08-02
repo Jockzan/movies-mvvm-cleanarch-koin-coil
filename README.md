@@ -180,8 +180,7 @@ fun MoviesScreen(
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/MovieApp.git
-   cd MovieApp
+   git clone https://github.com/Jockzan/movies-mvvm-cleanarch-koin-coil.git
    ```
 
 2. Open the project in Android Studio.
