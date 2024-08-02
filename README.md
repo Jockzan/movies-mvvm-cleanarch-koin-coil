@@ -3,19 +3,9 @@
 
 MovieApp is an Android application that showcases a list of movies in different categories: Popular, Top Rated, Upcoming, and Now Playing. The application follows the MVVM architecture and Clean Architecture principles to ensure a modular, maintainable, and testable codebase. The app uses modern Android development tools and libraries, including NavController for navigation, Koin for dependency injection, Coil for image caching, and Retrofit for networking.
 
-## Screenshots
-
-### Home Screen
-![home_screen](https://github.com/user-attachments/assets/85c80c15-30d0-4e41-b32a-e6d4fa2c911a)
-
-
-
-### Movie Details Screen
-![detail_screen](https://github.com/user-attachments/assets/c621aee5-c1f0-47b4-be65-c868e070a5ab)
-
-
 ## Table of Contents
 
+- [Screenshots](#screenshots)
 - [Features](#features)
 - [Architecture](#architecture)
   - [Data Layer](#data-layer)
@@ -24,9 +14,14 @@ MovieApp is an Android application that showcases a list of movies in different 
 - [Libraries](#libraries)
 - [Setup](#setup)
 - [Usage](#usage)
-- [Screenshots](#screenshots)
-- [Contributing](#contributing)
-- [License](#license)
+
+## Screenshots
+
+### Home Screen
+![home_screen](https://github.com/user-attachments/assets/85c80c15-30d0-4e41-b32a-e6d4fa2c911a)
+
+### Movie Details Screen
+![detail_screen](https://github.com/user-attachments/assets/c621aee5-c1f0-47b4-be65-c868e070a5ab)
 
 ## Features
 
