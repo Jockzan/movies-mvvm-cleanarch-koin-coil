@@ -43,11 +43,11 @@ import com.jcb.koinapp.domain.models.ProductionCompany
 import com.jcb.koinapp.domain.models.Video
 import com.jcb.koinapp.presentation.utils.Constants
 import com.jcb.koinapp.presentation.utils.toMedium
-import org.koin.androidx.compose.getViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun MovieDetailsScreen(
-    viewModel: MovieDetailsViewModel = getViewModel<MovieDetailsViewModel>(),
+    viewModel: MovieDetailsViewModel = koinViewModel<MovieDetailsViewModel>(),
     movieId: Int = 1,
     navController: NavController
 ) {

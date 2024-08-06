@@ -1,40 +1,27 @@
 package com.jcb.koinapp.presentation.ui.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.navArgument
+import androidx.navigation.toRoute
 import com.jcb.koinapp.presentation.ui.movies.detail.MovieDetailsScreen
 import com.jcb.koinapp.presentation.ui.movies.list.MoviesScreen
 
-
 @Composable
 fun AppNavHost(
-    modifier: Modifier = Modifier,
     navController: NavHostController,
-    startDestination: String = NavigationItem.Movies.route,
+    startDestination: Any = Movies,
 ) {
     NavHost(
-        modifier = modifier,
-        startDestination = startDestination,
         navController = navController,
+        startDestination = startDestination,
     ) {
-        composable(NavigationItem.Movies.route) {
+        composable<Movies> {
             MoviesScreen(navController = navController)
         }
-        composable(
-            route = "${NavigationItem.MovieDetails.route}/{movieId}",
-            arguments = listOf(
-                navArgument("movieId") {
-                    type = NavType.IntType
-                    defaultValue = 1
-                }
-            )
-        ) {
-            val movieId = it.arguments?.getInt("movieId") ?: 1
+        composable<MovieDetails> {
+            val movieId = it.toRoute<MovieDetails>().moveId
             MovieDetailsScreen(movieId = movieId, navController = navController)
         }
     }

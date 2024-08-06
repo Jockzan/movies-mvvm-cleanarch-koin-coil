@@ -1,11 +1,9 @@
 package com.jcb.koinapp.presentation.ui.navigation
 
-enum class Screen {
-    MOVIES,
-    MOVIE_DETAILS
-}
+import kotlinx.serialization.Serializable
 
-sealed class NavigationItem(val route: String) {
-    object Movies : NavigationItem(Screen.MOVIES.name)
-    object MovieDetails : NavigationItem(Screen.MOVIE_DETAILS.name)
-}
+@Serializable
+object Movies
+
+@Serializable
+data class MovieDetails(val moveId: Int)

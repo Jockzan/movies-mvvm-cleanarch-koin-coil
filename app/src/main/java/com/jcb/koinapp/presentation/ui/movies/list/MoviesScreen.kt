@@ -30,13 +30,13 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.jcb.koinapp.domain.models.Movie
-import com.jcb.koinapp.presentation.ui.navigation.Screen
+import com.jcb.koinapp.presentation.ui.navigation.MovieDetails
 import com.jcb.koinapp.presentation.utils.Constants
-import org.koin.androidx.compose.getViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun MoviesScreen(
-    viewModel: MoviesViewModel = getViewModel<MoviesViewModel>(),
+    viewModel: MoviesViewModel = koinViewModel<MoviesViewModel>(),
     navController: NavController
 ) {
     val scrollState = rememberScrollState()
@@ -98,7 +98,7 @@ fun MovieCategory(
         MoviesContent(
             movies = movies,
             onMovieSelected = {
-                navController.navigate("${Screen.MOVIE_DETAILS.name}/$it")
+                navController.navigate(MovieDetails(moveId = it))
             }
         )
     }

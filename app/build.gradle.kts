@@ -3,6 +3,7 @@ import java.util.Properties
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 val tokenPropertiesFile = rootProject.file("api.properties")
@@ -99,6 +100,7 @@ dependencies {
     implementation(libs.retrofit.okhttp.interceptor)
     implementation(libs.navigation.compose)
     implementation(libs.coil.compose)
+    implementation(libs.kotlinx.serialization)
 
     implementation(libs.lifecycle.viewmodel.compose)
 }
