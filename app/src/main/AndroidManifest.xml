@@ -25,9 +25,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".presentation.ui.details.DetailsActivity"
-            android:theme="@style/Theme.KoinApp" />
     </application>
 
 </manifest>
