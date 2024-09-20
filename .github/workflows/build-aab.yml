@@ -1,0 +1,49 @@
+# .github/workflows/build-aab.yml
+
+name: Build App Bundle
+
+on:
+  workflow_run:
+    workflows: [ "Unit Tests" ]
+    types:
+      - completed
+
+jobs:
+  build-aab:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    name: Build AAB
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            gradle-${{ runner.os }}
+
+      # Step to create the token.properties file
+      - name: Create token.properties
+        run: |
+          echo "API_KEY=${{ secrets.API_KEY }}" >> api.properties
+
+      - name: Build App Bundle
+        run: ./gradlew bundleRelease --no-daemon
+
+      - name: Upload App Bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release.aab
+          path: app/build/outputs/bundle/release/app-release.aab
