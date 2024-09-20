@@ -29,8 +29,6 @@ jobs:
       - name: Create token.properties
         run: |
           echo "API_KEY=${{ secrets.API_KEY }}" >> api.properties
-          echo "CLIENT_ID=${{ secrets.CLIENT_ID }}" >> api.properties
-          # Add more properties as needed
 
       - name: Cache Gradle dependencies
         uses: actions/cache@v3
